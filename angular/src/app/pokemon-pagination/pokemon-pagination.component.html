@@ -22,5 +22,5 @@
 </table>
 
 <div *ngIf="pokemonData.results" class="d-flex justify-content-center">
-  <ngb-pagination [collectionSize]="count" [(page)]="page" [boundaryLinks]="true" (pageChange)="setActive()" [maxSize]="20"></ngb-pagination>
+  <ngb-pagination [collectionSize]="pokemonData.results.length" [(page)]="page" [boundaryLinks]="true" (pageChange)="setActive()" [maxSize]="20"></ngb-pagination>
 </div>
