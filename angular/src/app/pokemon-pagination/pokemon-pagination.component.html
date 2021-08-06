@@ -1,0 +1,25 @@
+<p *ngIf="!pokemonData.results">Loading...</p>
+<table class="mx-auto" *ngIf="active.length">
+  <tr style="width:400px;" *ngFor="let pokemon of active" style="border: 1px solid #EBEBEB;" (click)="expandPokemon(pokemon)">
+    <td class="d-flex">
+      <img style="height:60px" src="{{pokemon.sprite}}">
+      <p>{{pokemon.name}}</p>
+    </td>
+    <ng-container *ngIf="pokemon.expanded">
+      <p>
+        Generation: {{pokemon.expanded.generation}}
+      </p>
+      Moves:
+      <ul style="height: 5rem;overflow-y: scroll;padding: 2rem;">
+        <li *ngFor="let move of pokemon.expanded.moves">{{move.move.name}}</li>
+      </ul>
+      <p>Weight: {{pokemon.expanded.weight}}</p>
+
+    </ng-container>
+
+  </tr>
+</table>
+
+<div class="d-flex justify-content-center">
+  <ngb-pagination [collectionSize]="count" [(page)]="page" [boundaryLinks]="true" (pageChange)="setActive()" [maxSize]="20"></ngb-pagination>
+</div>
